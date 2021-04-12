@@ -41,3 +41,34 @@ Shortens the time of production without comppromising on quality
 
  ## Conclusion..?
  Remember that it's not a job role, it's a culture. DevOps *Engineer* is the role
+
+ # Vagrant
+ ### Vagrant Commands
+ `vagrant up` to spin up a virtual machine  
+ `vagrant destroy` to destroy a machine  
+ `vagrant reload` to reload a machine  
+ `vagrant status` to check no. of machines and if they are running  
+ `vagrant halt` halts a machine
+ `vagrant ssh` (look it up)
+ `vagrant plugin install vagrant-hostsupdater`
+
+ ## Some Linux commands
+ - `sudo command` run a command as an admin
+ - `sudo su` move into admin mode
+ - `ls` list directory
+ - `ll` list dir with permisions
+ - `mkdir` create a directory
+ - `pwd` lets you know your current directory
+ - `nano filename` opens `filename` using the nano editor. If the file doesn't exist, it's created
+ - `mv` for moving files. Can also rename files using it
+ - `rm` used to remove files
+ - `ps` check processes that are running
+
+ Installing NGINX with `sudo apt-get install nginx`  
+ Check the install using `systemctl status nginx`
+
+ ### Extra
+```
+ vagrant plugin uninstall vagrant-hostsupdater
+ vagrant plugin install vagrant-hostsupdater --plugin-version=1.0.2
+```
