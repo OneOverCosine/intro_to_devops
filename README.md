@@ -72,3 +72,8 @@ Shortens the time of production without comppromising on quality
  vagrant plugin uninstall vagrant-hostsupdater
  vagrant plugin install vagrant-hostsupdater --plugin-version=1.0.2
 ```
+---
+Also...
+`gem install bundler:2.2.9`
+`bundle`
+`rake spec`
