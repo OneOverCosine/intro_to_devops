@@ -3,31 +3,50 @@ First, edit the Vagrant file to contain this information.
 Please note that `one` is a test name in this example.
 
 ``` ruby  
-  # replaced 'config' with 'one' to test things
-  config.vm.define "one" do |one|
+  Vagrant.configure("2") do |config|
 
-    one.vm.box = "ubuntu/xenial64"
+    # config.vm.provider "virtualbox" do |v|
+    #   v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+    #   v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
+    #   v.gui = true
+    # end
+
+  # replaced 'config' with 'one' to test things
+  config.vm.define "app" do |app|
+
+    app.vm.box = "ubuntu/xenial64"
     # config.vm.boot_timeout = 600
     # creating a virtual machine ubuntu
 
     # attatching a private network with an ip
-    one.vm.network "private_network", ip: "192.168.10.100"
+    app.vm.network "private_network", ip: "192.168.10.100"
     # let's create an alias to link this ip with logical web address
-    one.hostsupdater.aliases = ["development.local"]
+    app.hostsupdater.aliases = ["development.local"]
     # transfer files from OS to the VM
-    one.vm.synced_folder ".", "/home/vagrant/app"
+    app.vm.synced_folder ".", "/home/vagrant/starter_code/app"
     #
-    one.vm.provision "shell", path: "environment/provision.sh"
+    app.vm.provision "shell", path: "starter_code/environment/app/provision.sh"
 
   end
+  
 
   # configure a second machine
   config.vm.define "db" do |db|
     db.vm.box = "ubuntu/xenial64"
 
     db.vm.network "private_network", ip: "192.168.10.110"
+    # db.vm.network "forwarded_port", guest: 27017, host: 27017
+
+    db.hostsupdater.aliases = ["database.local"]
+
+    # transfer files from OS to the VM
+    db.vm.synced_folder ".", "/home/vagrant/starter_code/app"
+
+    db.vm.provision "shell", path: "starter_code/environment/db/provision.sh"
 
   end
+
+end
 ```
 
 ### Manual setup of MongoDB on db machine
