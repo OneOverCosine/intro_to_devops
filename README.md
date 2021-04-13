@@ -74,6 +74,13 @@ Shortens the time of production without comppromising on quality
 ```
 ---
 Also...
-`gem install bundler:2.2.9`
-`bundle`
-`rake spec`
+
+### Setting up the enviroment
+- add shell script path to our Vagrantfile
+- `config.vm.provision "shell", path: "environment/provision.sh"`
+
+### Testing that the environment is set up correctly
+
+`gem install bundler:2.2.9` -  
+`bundle` -  
+`rake spec` - Runs the test. Must be in the correct directory.
