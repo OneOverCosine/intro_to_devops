@@ -1,12 +1,15 @@
 # An Introduction to DevOps
-Before DevOps, the teams that worked on the (find word) would all be separate. Each team had their own jobs that they worked on, and there was little to no communication between them.  
+Before DevOps, the teams that worked on the software projects would all be separate. Each team had their own jobs that they worked on, and there was little to no communication between them.  
 
+### Additional info
 (The cloud became more popular in software development). Why? It is a lot more scalable than using traditional servers. 
 
 ## Application Design Patterns
 ### Monolith, N-tier, and Microservices
 *The Monolith* - All the code and the different parts of it are built together.  
 Useful for small projects.
+*N-tier* -  
+*Microservices* -  
 
 ## What is DevOps?
 - A collaboration of Development and Operations
@@ -34,10 +37,10 @@ Shortens the time of production without comppromising on quality
 
 ## DevOp Values
  CAMS model
- 1. Sharing
- 2. Measurement
- 3. Automation
- 4. Culture
+ - Culture
+ - Automation
+ - Measurement
+ - Sharing 
 
  ## Conclusion..?
  Remember that it's not a job role, it's a culture. DevOps *Engineer* is the role
@@ -79,6 +82,7 @@ Also...
 - add shell script path to our Vagrantfile
 - `config.vm.provision "shell", path: "environment/provision.sh"`
 - Create a script called `provision.sh` with the following:
+
 ```
 #!/bin/bash
 
