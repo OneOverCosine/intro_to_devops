@@ -1,15 +1,8 @@
 # Setting up a multi-machine environment
-First, edit the Vagrant file to contain this information.  
-Please note that `one` is a test name in this example.
+First, edit the Vagrant file to contain this information.
 
 ``` ruby  
   Vagrant.configure("2") do |config|
-
-    # config.vm.provider "virtualbox" do |v|
-    #   v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-    #   v.customize ["modifyvm", :id, "--natdnsproxy1", "on"]
-    #   v.gui = true
-    # end
 
   # replaced 'config' with 'one' to test things
   config.vm.define "app" do |app|
@@ -53,22 +46,27 @@ end
 Only doing this to get an idea of how to do things  
 https://docs.mongodb.com/manual/tutorial/install-mongodb-on-ubuntu/  
 
-These commands will be placed in the provsions file.
+These commands will be placed in the provsions file for the database.
 
-Needs to be v3.2
+Needs to be v3.2.20
 
-`sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 2930ADAE8CAF5059EE73BB4B58712A2291FA4AD5` - imports public key  
+`sudo apt-get upgrade -y` - upgrade  
 
-`echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list` - Create a list file for Ubuntu 16.04  
+`wget -qO - https://www.mongodb.org/static/pgp/server-3.2.asc | sudo apt-key add -` - import key  
 
-`sudo apt-get update` - updates list  
+`echo "deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.2 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.2.list` - create list file for Ubunbtu 16.04  
 
-`sudo apt-get install -y mongodb-org` - installs latest verision of MongoDB (but don't use this)
-`sudo apt-get install -y mongodb-org=3.2 mongodb-org-server=3.2 mongodb-org-shell=3.2 mongodb-org-mongos=3.2 mongodb-org-tools=3.2`  
+`sudo apt-get update -y` - updates list  
+
+`sudo apt-get install -y mongodb-org` - installs latest verision of MongoDB (but don't use this)  
+
+`sudo apt-get install -y mongodb-org=3.2.20 mongodb-org-server=3.2.20 mongodb-org-shell=3.2.20 mongodb-org-mongos=3.2.20 mongodb-org-tools=3.2.20` - installs the version we want  
+
+---
 
 **Now check that MongoDB will run**
 `sudo service mongod start` - start the service  
 `mongo` - check if it runs (use `exit` to return to quit)
 
 ### Running tests
-Run `rake spec` in spec folder
+Run `rake spec` in tests folder
