@@ -1,0 +1,13 @@
+vagrant destroy
+
+open virtualbox, remove machines
+
+on OS delete .vagrant folder
+
+vagrant up on the app, not db to test
+
+if working, then test db
+
+ssh into db and install manually
+
+create environment variable

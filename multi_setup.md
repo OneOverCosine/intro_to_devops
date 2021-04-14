@@ -64,7 +64,8 @@ Needs to be v3.2.20
 
 ---
 
-**Now check that MongoDB will run**
+**Now check that MongoDB will run** (done manually the first time round, just to make sure things are running. It's not required in the provision file)  
+
 `sudo service mongod start` - start the service  
 `mongo` - check if it runs (use `exit` to return to quit)
 
