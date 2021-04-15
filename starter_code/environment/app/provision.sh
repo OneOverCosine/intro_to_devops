@@ -1,25 +1,22 @@
 #!/bin/bash
 
-# run the update command [x]
 sudo apt-get update -y
 
-# upgrade? [x]
 sudo apt-get upgrade -y
 
-# install nginx [x]
 sudo apt-get install nginx -y
 
-# install Nodejs (version 6) + dependancies [x]
-sudo apt-get install python-software-properties -y
+sudo apt install python-software-properties -y
 
-# [x]
-sudo curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -
 
-# [x]
-sudo apt-get install -y nodejs
+sudo apt install nodejs -y
+ 
+sudo apt-get install npm -y
 
-# [x] to make sure the following command works
-# sudo apt-get install -y npm
+sudo npm install -g pm2
 
-# [] now install pm2 with npm
-sudo npm install pm2 -g
+hostnamectl set-hostname app
+
+# seeding the database
+node ./app/app/seeds/seed.js
